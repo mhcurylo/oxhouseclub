@@ -1,0 +1,159 @@
+ :root {
+  --paint-black: #000000;
+  --paint-pink: #FF90FE;
+  --paint-green: #00FF0B;
+  --paint-yellow: #FAFF08;
+  --paint-red: #FF0E00;
+  --paint-blue: #3400FE;
+  --font-red:#8A0000;
+  --font-blue:#00008A;
+  --font-green: #008A00;
+  --font-pink: #990090;
+}
+
+@media screen and (min-width: 1024px) {
+  .post_container{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+  }
+
+  .post_sidemenu{
+    margin-top: 123px;
+    max-width: 400px;
+  }
+  .post_content{
+    margin: 20px;
+    margin-top: 100px;
+    max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .post_container{
+  }
+  .post_sidemenu ul{
+    margin: 0px;
+    padding-top: 8px;
+  }
+  .post_content{
+  }
+
+}
+
+body {
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0px;
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--font-red);
+}
+
+a:visited {
+  text-decoration: none;
+  color: var(--font-blue)
+}
+
+a:hover {
+  text-decoration: none;
+  background: var(--font-green);
+}
+
+a:active {
+  text-decoration: none;
+}
+
+#bckg {
+  position: fixed;
+  height: 100%;
+  z-index: -100;
+}
+
+.post_sidemenu{
+  font-weight: bold;
+  text-align: left;
+}
+
+.post_sidemenu_item{
+  color: var(--font-red);
+  margin-bottom: 2px;
+  line-height: 1.2;
+
+}
+
+.post_sidemenu ul{
+  list-style-type: none;
+  padding-inline-start: 8px;
+}
+
+.post_sidemenu_item a{
+  font-size: 1em;
+  line-height: 1.5;
+  padding: 2px 10px 2px 4px;
+  background-color: var(--paint-yellow);
+  box-shadow: 0px 0px 0px 4px var(--paint-pink);
+}
+
+.post_sidemenu_target a{
+  background-color: var(--paint-pink);
+}
+
+.post_sidemenu_item a:link {
+  text-decoration: none;
+}
+
+.post_sidemenu_item a:visited {
+  text-decoration: none;
+}
+
+.post_sidemenu_item a:hover {
+  background-color: white;
+}
+
+.post_sidemenu_item a:active {
+  background-color: white;
+}
+
+.post_content{
+  padding: 20px;
+  font-size: 1em;
+}
+
+.post_content h2{
+  font-size: 1.2em;
+  margin-bottom: 32px;
+}
+
+.post_content h2 span{
+  line-height: 1.2;
+  padding: 8px 16px 8px 16px;
+  margin-left: -16px;
+  color: var(--font-red);
+  background-color: var(--paint-green);
+  box-shadow: 8px 8px 0px 0px var(--paint-blue);
+}
+ 
+.post_content p {
+  padding: 20px;
+  font-size: 1em;
+  background-color: white;
+  display: block;
+  margin: 0px;
+}
+
+blockquote {
+  color: var(--font-pink);
+  font-weight: 700;
+}
+
+blockquote p {
+  padding: 0px;
+  margin: 0px;
+}
+
+blockquote cite {
+  font-weight: 500;
+}
