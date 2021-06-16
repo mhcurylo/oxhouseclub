@@ -15,6 +15,7 @@ import qualified Text.Blaze.Internal as B
 import Text.Markdown
 import Text.Markdown.Block
 import Text.Markdown.Inline
+import Data.List (sort)
 import qualified Data.Text.Lazy.IO as T
 import qualified Data.Text.Lazy as T
 import qualified Data.Text as NL
@@ -23,7 +24,7 @@ import Control.Monad (forM_, mapM)
 
 main = do
   postFiles <- map ("posts/" <>) <$> listDirectory "posts"
-  posts <- mapM T.readFile $ (postFiles <> ["./about.markdown"])
+  posts <- mapM T.readFile $ (sort postFiles <> ["./about.markdown"])
   T.writeFile "index.html"  . spanParagraphs . renderHtml $ fromMarkdownBlog posts
 
 fromMarkdownBlog posts = docTypeHtml ! lang "en" $ do
@@ -43,12 +44,12 @@ fromMarkdownBlog posts = docTypeHtml ! lang "en" $ do
       let postTitle = (Prelude.head . T.lines) post
       div ! class_ "post_container" ! id (lazyTextValue postTitle) $ do
         div ! class_ "post_sidemenu" $ ul $ forM_ postTitles \pt -> do
-          li ! class_ ("post_sidemenu_item" <> 
-                        if pt == postTitle then " post_sidemenu_target" else "") 
+          li ! class_ ("post_sidemenu_item" <>
+                        if pt == postTitle then " post_sidemenu_target" else "")
             $ a ! href (lazyTextValue $ "#" <> pt) $ toHtml pt
         div ! class_ "post_content" $ markdown def post
     script ! src "bckg.js" $ ""
-   
+
 
 spanParagraphs = T.replace "<h2>" "<h2><span>" . T.replace "</h2>" "</span></h2>"
                . T.replace "<p>" "<p><span>" . T.replace "</p>" "</span></p>"
